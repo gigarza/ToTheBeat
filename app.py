@@ -4,6 +4,7 @@ app = Flask(__name__)
 
 
 authorization = None
+user_id = None
 
 
 # Set up the homepage
@@ -13,15 +14,25 @@ def homepage():
     return render_template("index.html")
 
 
+@app.route('/set_fields')
+def set_fields():
+    print("setFields")
+    global authorization
+    authorization = request.args["access_token"]
+    global user_id
+    user_id = request.args["id"]
+    return authorization
+
+
 # Set up create playlist page
-@app.route('/createplaylist')
-def createplaylist():
+@app.route('/create_playlist')
+def create_playlist():
     print("createplaylist")
     # global user_id
     # user_id = request.args.get("user_id")
-    global authorization
-    authorization = request.args.get("access_token")
-    return render_template("createplaylist.html", authorization=authorization)
+    # global authorization
+    # authorization = request.args.get("access_token")
+    return render_template("createplaylist.html", user_id=user_id, authorization=authorization)
 
 
 # Set up result page

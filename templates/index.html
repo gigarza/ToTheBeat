@@ -31,13 +31,15 @@
     </div>
 
     <div id="loggedin">
-            <div id="user-profile"></div>
-            <div id="oauth"></div>
+        <div id="user-profile"></div>
+        <div id="oauth"></div>
     </div>
 
     <script id="user-profile-template" type="text/x-handlebars-template">
-        <p>Id</p>
-        <p>{{id}}</p>
+        <p>Redirecting...</p>
+        <div>
+            <a href="{{ url_for("create_playlist") }}">Click Here to be redirected</a>
+        </div>
     </script>
 
     <script id="oauth-template" type="text/x-handlebars-template">
@@ -98,11 +100,13 @@
             state = params.state,
             storedState = localStorage.getItem(stateKey);
 
+       var responseGiven = null;
         if (access_token && (state == null)) {
           alert('There was an error during the authentication');
         } else {
           localStorage.removeItem(stateKey);
           if (access_token) {
+              console.log(access_token);
             $.ajax({
                 url: 'https://api.spotify.com/v1/me',
                 headers: {
@@ -110,9 +114,13 @@
                 },
                 success: function(response) {
                   userProfilePlaceholder.innerHTML = userProfileTemplate(response);
-
+                  console.log(response);
+                  console.log(response.id);
+                  responseGiven = response;
                   $('#login').hide();
                   $('#loggedin').show();
+                  console.log("I get here");
+                  $.ajax({url: "set_fields", data: {access_token: access_token, id: responseGiven.id}});
                 }
             });
           } else {
@@ -123,7 +131,7 @@
           document.getElementById('login-button').addEventListener('click', function() {
 
             var client_id = 'b73b288fa258400b8332fbc0319790f1'; // Your client id
-           var redirect_uri = 'http://localhost:63342/ToTheBeat/templates/index.html'; // Your redirect uri
+           var redirect_uri = 'http://localhost:5000/'; // Your redirect uri
 
             var state = generateRandomString(16);
 
