@@ -1,8 +1,57 @@
 <!DOCTYPE html>
 <head>
+    <link href="https://maxcdn.bootstrapcdn.com/bootswatch/4.1.1/lux/bootstrap.min.css" rel="stylesheet">
+    <link href="https://use.fontawesome.com/releases/v5.1.0/css/all.css" rel="stylesheet">
+
     <title>Result | To The Beat</title>
 </head>
 <body>
-    <h1>Result</h1>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary" style="padding: 10px 10px 10px 10px">
+        <div class="navbar-header">
+            <p class="navbar-brand active" style="margin: 0 auto">To The Beat</p>
+        </div>
+        <p style="margin-right: 10px; margin-left: 1050px;margin-top: 12.250px">Logged In as: {{ user_id }}</p>
+        <div id="logo">
+            <i class="fab fa-spotify fa-2x" style="color: #1db954; margin: 0 auto"></i>
+        </div>
+    </nav>
+
+
+    <div class="container-fluid">
+        <div class="row">
+            <div class=col-md-2>
+            </div>
+            <div class=col-md-8>
+                 <h1 style="margin-top: 25px; text-align: center; font-size: 60px;">
+                    <small class="text-muted" style="font-size: 85px">[</small> Playlist Created
+                     <small class="text-muted" style="font-size: 85px">]</small></h1>
+
+                <p style="text-align: center; font-size: 17px">Congratulations, the playlist {{ name }} was successfully created!</p>
+            </div>
+            <div class=col-md-2>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class ="col-md-2">
+
+            </div>
+            <div class ="col-md-4" style="text-align: center">
+                <h5>Playlist Name: {{ name }}</h5>
+                <h5>Tempo of Playlist: {{ tempo }}</h5>
+            </div>
+            <div class ="col-md-4" style="text-align: center">
+                <h5>Number of Songs: {{ num_songs }}</h5>
+                <h5>Total Time: {{ time }}</h5>
+            </div>
+            <div class ="col-md-2">
+
+            </div>
+        </div>
+    </div>
+
+    <div>
+        <p>Playlist will be here</p>
+    </div>
 </body>
 </html>

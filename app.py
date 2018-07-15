@@ -1,4 +1,5 @@
 from flask import Flask, render_template, request
+import requests
 
 app = Flask(__name__)
 
@@ -28,10 +29,7 @@ def set_fields():
 @app.route('/create_playlist')
 def create_playlist():
     print("createplaylist")
-    # global user_id
-    # user_id = request.args.get("user_id")
-    # global authorization
-    # authorization = request.args.get("access_token")
+    global authorization
     return render_template("createplaylist.html", user_id=user_id, authorization=authorization)
 
 

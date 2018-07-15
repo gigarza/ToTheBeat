@@ -36,9 +36,9 @@
     </div>
 
     <script id="user-profile-template" type="text/x-handlebars-template">
-        <p>Redirecting...</p>
+        <p id="redirect">Redirecting...</p>
         <div>
-            <a href="{{ url_for("create_playlist") }}">Click Here to be redirected</a>
+            <a href="{{ url_for("create_playlist") }}">Click Here to be redirected if not Automatic</a>
         </div>
     </script>
 
@@ -136,7 +136,7 @@
             var state = generateRandomString(16);
 
             localStorage.setItem(stateKey, state);
-            var scope = 'user-read-private user-read-email';
+            var scope = 'user-read-private user-read-email user-library-read';
 
             var url = 'https://accounts.spotify.com/authorize';
             url += '?response_type=token';

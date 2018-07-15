@@ -117,3 +117,9 @@
     if(access_token) {
         $.ajax({url: "updatefields", data: {access_token: access_token}});
     }
+
+
+    style="margin-right: 10px; margin-left: 1050px;margin-top: 12.250px"
+            <div id="logo">
+            <i class="fab fa-spotify fa-2x" style="color: #1db954; margin: 0 auto"></i>
+        </div>
