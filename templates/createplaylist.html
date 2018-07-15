@@ -43,17 +43,21 @@
                          <i class="fas fa-volume-up fa-4x" style="margin: 0 auto; text-align: center; width: 100%"></i>
                      </a>
                  </div>
+                 <audio id="linkAudio">
+                  <source src="/static/sounds/single_beat.mp3" type="audio/mp3">
+                        Your browser does not support the audio element.
+                </audio>
              </div>
              <div class="col-md-7">
                  <form>
                   <fieldset>
                     <div class="form-group">
                       <label>Playlist Name</label>
-                      <input class="form-control" placeholder="Enter Any Name">
+                      <input id="playlist_name" class="form-control" placeholder="Enter Any Name">
                     </div>
                     <div class="form-group">
                       <label for="exampleSelect1">Beats Per Minute</label>
-                      <input id="tempo_input" class="form-control" placeholder="Enter a Number">
+                      <input id="tempo_input" class="form-control" placeholder="Enter a Number" onchange="updateTempo()">
                     </div>
                     <button type="button" class="btn btn-primary" onclick="submitInfo()">Submit</button>
                   </fieldset>
@@ -65,6 +69,9 @@
          </div>
      </div>
 
+    <script>var client_id = {{ user_id|tojson }}</script>
+    <script>var authorization ={{ authorization|tojson }}</script>
+    <script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
     <script src="{{ url_for("static", filename="js/createplaylist.js") }}"></script>
 </body>
 
