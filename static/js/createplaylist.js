@@ -15,10 +15,16 @@ function playtempo() {
     setInterval(play_beat, bpms);
 }
 
+function play_beat() {
+    var sound = document.getElementById('linkAudio');
+    sound.play();
+}
+
 function submitInfo() {
     var givenTempo = document.getElementById('tempo_input').value;
     tempo = parseInt(givenTempo);
     var givenName = document.getElementById('playlist_name').value;
+    var songs_to_add = null;
     console.log("Submit Info: " + tempo + " " + givenName);
     $.ajax({
         url: 'https://api.spotify.com/v1/me/tracks',
@@ -26,13 +32,27 @@ function submitInfo() {
           'Authorization': 'Bearer ' + authorization
         },
         success: function(response) {
-          var faved_songs = response;
-          console.log(response);
+          var faved_songs = JSON.stringify(response);
+          console.log(faved_songs);
+          songs_to_add = goThroughSongs(faved_songs, tempo);
+        }
+    });
+    $.ajax({
+        url: 'https://api.spotify.com/v1/users/' + client_id +/playlists',
+        headers: {
+          'Authorization': 'Bearer ' + authorization,
+          'Content-Type': 'application/json'
+        },
+        data: "{\"name\":\"" + givenName + "\",\"public\":false}",
+        success: function(response) {
+            //add the songs!
+            //send to result
         }
     });
 }
 
-function play_beat() {
-    var sound = document.getElementById('linkAudio');
-    sound.play();
+function goThroughSongs(faved,tempo) {
+    //go through faved to get the spotify track ID
+    //with the track id look for tempo
+    //if within range, add it to result
 }
