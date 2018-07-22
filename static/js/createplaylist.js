@@ -71,8 +71,7 @@ function submitInfo() {
                                 }
                             });
                     } , complete: function (response) {
-                             $.ajax({url: "result", success: function(result) {
-                             }});
+                           $("html").load("/result");
                     }
                 });
         }

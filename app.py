@@ -36,6 +36,7 @@ def create_playlist():
 # Set up result page
 @app.route('/result')
 def result():
+    print("result")
     return render_template("result.html")
 
 
