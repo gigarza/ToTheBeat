@@ -55,6 +55,24 @@ function submitInfo() {
                     success: function(response) {
                         playlist_id = response.id;
                         console.log(JSON.stringify(response));
+                        var json_Songs = {
+                          "uris": songs_to_add
+                        };
+                            $.ajax({
+                                type: "POST",
+                                url: 'https://api.spotify.com/v1/users/' + client_id + '/playlists/' + playlist_id + '/tracks',
+                                headers: {
+                                  'Authorization': 'Bearer ' + authorization,
+                                },
+                                contentType: 'application/json',
+                                data: JSON.stringify(json_Songs),
+                                dataType: 'json',
+                                success: function(response) {
+                                }
+                            });
+                    } , complete: function (response) {
+                             $.ajax({url: "result", success: function(result) {
+                             }});
                     }
                 });
         }
@@ -84,20 +102,6 @@ function goThroughSongs(faved,tempoGiven) {
             }
         });
     }
+    console.log("End of goThroughSongs: " + result.toString());
     return result;
-}
-
-function makePlaylist(adding, name) {
-    // $.ajax({
-    //     url: 'https://api.spotify.com/v1/users/' + client_id + '/playlists/' + playlist_id + '/tracks',
-    //     headers: {
-    //       'Authorization': 'Bearer ' + authorization,
-    //       'Content-Type': 'application/json'
-    //     },
-    //     data: '{"uris":' + songs_to_add + '}',
-    //     success: function(response) {
-    //     }
-    // });
-    //  $.ajax({url: "result", success: function(result) {
-    //  }});
 }
