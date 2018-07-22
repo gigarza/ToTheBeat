@@ -97,11 +97,11 @@ function goThroughSongs(faved,tempoGiven) {
               // console.log("TEMPO: " + response.tempo);
               track_tempo = parseInt(response.tempo);
                if((tempoGiven - 5 <= track_tempo) && (track_tempo <= tempoGiven + 5)) {
-                    result.push(track_uri);
+                    result.push(response.uri);
                 }
             }
         });
     }
-    console.log("End of goThroughSongs: " + result.toString());
+    // console.log("End of goThroughSongs: " + result.toString());
     return result;
 }
