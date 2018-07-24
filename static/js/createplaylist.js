@@ -69,8 +69,9 @@ function submitInfo() {
                                 dataType: 'json',
                                 success: function(response) {
                                     console.log("I got here!");
-                                    $('#result_end').text("*Playlist Created! Click Here to view info!*");
                                     $.ajax({url: "playlist_info", data: {name: givenName, num: songs_to_add.length, tempo: givenTempo, id: playlist_id}});
+                                    $('#result_end').text("*Playlist Created! Click Here to view info!*");
+                                    console.log("I got here p2");
                                 }
                             });
                     }
