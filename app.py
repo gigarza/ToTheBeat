@@ -15,13 +15,11 @@ play_id = None
 # Set up the homepage
 @app.route('/')
 def homepage():
-    print("homepage")
     return render_template("index.html")
 
-
+# Update the fields after authorization granted
 @app.route('/set_fields')
 def set_fields():
-    print("setFields")
     global authorization
     authorization = request.args["access_token"]
     global user_id
@@ -32,14 +30,12 @@ def set_fields():
 # Set up create playlist page
 @app.route('/create_playlist')
 def create_playlist():
-    print("createplaylist")
     global authorization
     return render_template("createplaylist.html", user_id=user_id, authorization=authorization)
 
-
+# Update the fields after the playlist has been created
 @app.route('/playlist_info')
 def playlist_info():
-    print("playlist_info")
     global play_name
     play_name = request.args["name"]
     global play_num
@@ -53,7 +49,6 @@ def playlist_info():
 # Set up result page
 @app.route('/result')
 def result():
-    print("result")
     global play_name
     global play_num
     global play_tempo

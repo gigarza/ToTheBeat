@@ -7,6 +7,7 @@
     <title>Create | To The Beat</title>
 </head>
 <body>
+    <!-- Header bar -->
     <nav class="navbar navbar-expand-lg navbar-dark bg-primary" style="padding: 10px 10px 10px 10px">
         <div class="navbar-header">
             <p class="navbar-brand active" style="margin: 0 auto">To The Beat</p>
@@ -17,7 +18,7 @@
         </div>
     </nav>
 
-
+    <!-- Get User's to fill out necessary info -->
      <div class="container-fluid">
         <div class="row">
             <div class=col-md-2>
@@ -62,6 +63,7 @@
                     <button type="button" class="btn btn-primary" onclick="submitInfo()" style="margin-bottom: 15px">Submit</button>
                   </fieldset>
                 </form>
+                 <!-- Below will be updated once playlist is created -->
                  <a href="{{ url_for("result") }}" id="result_end" style="color: #1db954 !important; font-weight: bold"> </a>
              </div>
 

@@ -8,6 +8,7 @@
 </head>
 
 <body>
+ <!-- Prior to login, simple homepage -->
     <div id="login">
         <div>
             <h1 style="text-align: center; font-size: 150px; margin-top: 100px">To The Beat</h1>
@@ -30,6 +31,7 @@
         </div>
     </div>
 
+ <!-- Post-login, Redirecting page -->
     <div id="loggedin">
         <div id="user-profile"></div>
         <div id="oauth"></div>
@@ -42,6 +44,7 @@
         </div>
     </script>
 
+ <!-- Code to get user's authorization; Mostly taken from Spotify's Developer example code -->
     <script id="oauth-template" type="text/x-handlebars-template">
       <h2>oAuth info</h2>
       <dl class="dl-horizontal">
@@ -106,7 +109,6 @@
         } else {
           localStorage.removeItem(stateKey);
           if (access_token) {
-              console.log(access_token);
             $.ajax({
                 url: 'https://api.spotify.com/v1/me',
                 headers: {
@@ -114,12 +116,9 @@
                 },
                 success: function(response) {
                   userProfilePlaceholder.innerHTML = userProfileTemplate(response);
-                  console.log(response);
-                  console.log(response.id);
                   responseGiven = response;
                   $('#login').hide();
                   $('#loggedin').show();
-                  console.log("I get here");
                   $.ajax({url: "set_fields", data: {access_token: access_token, id: responseGiven.id}});
                 }
             });
