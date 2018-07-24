@@ -59,9 +59,10 @@
                       <label for="exampleSelect1">Beats Per Minute</label>
                       <input id="tempo_input" class="form-control" placeholder="Enter a Number" onchange="updateTempo()">
                     </div>
-                    <button type="button" class="btn btn-primary" onclick="submitInfo()">Submit</button>
+                    <button type="button" class="btn btn-primary" onclick="submitInfo()" style="margin-bottom: 15px">Submit</button>
                   </fieldset>
                 </form>
+                 <a href="{{ url_for("result") }}" id="result_end" style="color: #1db954 !important; font-weight: bold"> </a>
              </div>
 
              <div class="col-md-1">

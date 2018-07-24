@@ -62,16 +62,17 @@ function submitInfo() {
                                 type: "POST",
                                 url: 'https://api.spotify.com/v1/users/' + client_id + '/playlists/' + playlist_id + '/tracks',
                                 headers: {
-                                  'Authorization': 'Bearer ' + authorization,
+                                  'Authorization': 'Bearer ' + authorization
                                 },
                                 contentType: 'application/json',
                                 data: JSON.stringify(json_Songs),
                                 dataType: 'json',
                                 success: function(response) {
+                                    console.log("I got here!");
+                                    $('#result_end').text("*Playlist Created! Click Here to view info!*");
+                                    $.ajax({url: "playlist_info", data: {name: givenName, num: songs_to_add.length, tempo: givenTempo, id: playlist_id}});
                                 }
                             });
-                    } , complete: function (response) {
-                           $("html").load("/result");
                     }
                 });
         }

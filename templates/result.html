@@ -27,31 +27,31 @@
                      <small class="text-muted" style="font-size: 85px">]</small></h1>
 
                 <p style="text-align: center; font-size: 17px">Congratulations, the playlist {{ name }} was successfully created!</p>
+                <div class="row">
+                    <div class ="col-md-6" style="text-align: center">
+                        <h5>Playlist Name: {{ name }}</h5>
+                    </div>
+                    <div class ="col-md-6" style="text-align: center">
+                        <h5>Playlist Tempo: {{ tempo }} BPM</h5>
+                    </div>
+                </div>
+                <h5 style="text-align: center">Number of Songs: {{ num_songs }}</h5>
             </div>
             <div class=col-md-2>
             </div>
         </div>
 
-        <div class="row">
-            <div class ="col-md-2">
-
+        <div class="row" style="margin-top: 20px">
+            <div class="col-md-2">
             </div>
-            <div class ="col-md-4" style="text-align: center">
-                <h5>Playlist Name: {{ name }}</h5>
-                <h5>Tempo of Playlist: {{ tempo }}</h5>
+            <div class="col-md-8">
+                <iframe src="https://open.spotify.com/embed/user/gigarza98/playlist/{{ id }}"
+                width="100%" height="450" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>
             </div>
-            <div class ="col-md-4" style="text-align: center">
-                <h5>Number of Songs: {{ num_songs }}</h5>
-                <h5>Total Time: {{ time }}</h5>
-            </div>
-            <div class ="col-md-2">
-
+            <div class="col-md-2">
             </div>
         </div>
     </div>
 
-    <div>
-        <p>Playlist will be here</p>
-    </div>
 </body>
 </html>
